@@ -101,3 +101,25 @@ subset(Set, []).
 subset(Set, [H|T]) :-
   del(H, Set, DS),
   subset(DS, T).
+
+divideList([A, B], [A], [B]).
+
+divideList(L, A, B) :-
+  evenlength(L),
+  conc(A, B, L),
+  length(A, X),
+  length(B, X).
+
+divideList(L, A, B) :-
+  oddLength(L),
+  conc(A, B, L),
+  [H|T] = A,
+  length(T, X),
+  length(B, X).
+
+length1([], 0).
+
+length1([H|T], X) :-
+  length1(T, Y),
+  X = Y + 1.
+
